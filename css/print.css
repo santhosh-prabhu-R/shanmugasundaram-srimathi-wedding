@@ -1,0 +1,12 @@
+/* =====================================================
+   PRINT STYLES — Wedding Invitation Website
+   ===================================================== */
+@media print {
+  #intro-overlay, #main-nav { display: none !important; }
+  #main-content { opacity: 1 !important; }
+  section { padding: 40px 20px; page-break-inside: avoid; }
+  .btn-primary, .btn-secondary, .event-btn, .whatsapp-btn { display: none; }
+  body { background: white; color: black; font-size: 12pt; }
+  .section-title { color: #701E32; }
+  .couple-card, .event-card, .location-card { box-shadow: none; border: 1px solid #B79555; }
+}
