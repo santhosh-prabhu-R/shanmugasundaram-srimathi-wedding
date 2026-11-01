@@ -1480,6 +1480,43 @@ section {
   margin: 0 auto 40px;
 }
 
+/* ── Footer WhatsApp share button ── */
+.footer-whatsapp-wrap {
+  margin: 32px auto 40px;
+  display: flex;
+  justify-content: center;
+}
+.footer-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 28px;
+  background: #25D366;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+  box-shadow: 0 4px 18px rgba(37,211,102,0.28);
+}
+.footer-whatsapp-btn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.footer-whatsapp-btn:hover {
+  background: #1fb859;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37,211,102,0.42);
+}
+.footer-whatsapp-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(37,211,102,0.25);
+}
+
 .footer-bottom {
   border-top: 1px solid rgba(183,149,85,0.15);
   padding-top: 24px;
@@ -2076,6 +2113,61 @@ html {
   margin-top: 24px;
 }
 
+/* ── Elegant invitation card (replaces PDF viewer) ── */
+.invitation-elegant-card {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 56px) clamp(24px, 5vw, 48px);
+  border: 1px solid rgba(183,149,85,0.38);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.95), rgba(248,240,223,0.96));
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+.invitation-doc-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+}
+.invitation-doc-icon svg { width: 100%; height: 100%; }
+.invitation-elegant-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.invitation-elegant-subtitle {
+  font-family: 'Noto Serif Tamil', serif;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  margin-bottom: 28px;
+  opacity: 0.9;
+}
+.invitation-elegant-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+/* Single-column contact grid (centered) */
+.contact-grid--single {
+  grid-template-columns: 1fr;
+  max-width: 280px;
+  margin: 0 auto;
+}
+.contact-name {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--forest);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
 .form-note.is-error { color: var(--burgundy); background: rgba(112,30,50,0.07); }
 .wishes-form button:disabled { opacity: 0.58; cursor: not-allowed; transform: none; box-shadow: none; }
 .wishes-load-more {
@@ -2099,6 +2191,10 @@ html {
   .invitation-pdf-actions { flex-direction: column; align-items: stretch; }
   .invitation-pdf-actions .btn-primary,
   .invitation-pdf-actions .btn-secondary { justify-content: center; }
+  .invitation-elegant-card { padding: 28px 20px; }
+  .invitation-elegant-actions { flex-direction: column; align-items: stretch; }
+  .invitation-elegant-actions .btn-primary,
+  .invitation-elegant-actions .btn-secondary { justify-content: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -302,6 +302,49 @@
     <!-- Gold line divider -->
     <div class="section-divider" aria-hidden="true"><span></span></div>
 
+    <!-- ── COUNTDOWN ──────────────────────────────── -->
+    <section id="countdown" aria-labelledby="countdown-heading">
+      <div class="container">
+        <div class="section-label reveal-up" data-en="Counting Down" data-ta="நேரக்கணக்கு">Counting Down</div>
+        <h2 id="countdown-heading" class="section-title reveal-up" data-en="The Big Day Approaches"
+          data-ta="பெரிய நாள் நெருங்குகிறது">The Big Day Approaches</h2>
+
+        <div class="countdown-grid reveal-up" id="countdown-display" aria-live="polite"
+          aria-label="Countdown to wedding reception">
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-days">--</span>
+            <span class="countdown-label" data-en="Days" data-ta="நாட்கள்">Days</span>
+          </div>
+          <div class="countdown-separator" aria-hidden="true">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-hours">--</span>
+            <span class="countdown-label" data-en="Hours" data-ta="மணி">Hours</span>
+          </div>
+          <div class="countdown-separator" aria-hidden="true">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-minutes">--</span>
+            <span class="countdown-label" data-en="Minutes" data-ta="நிமிடம்">Minutes</span>
+          </div>
+          <div class="countdown-separator" aria-hidden="true">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-seconds">--</span>
+            <span class="countdown-label" data-en="Seconds" data-ta="நொடி">Seconds</span>
+          </div>
+        </div>
+
+        <p id="countdown-post" class="countdown-post" style="display:none;"
+          data-en="The celebration has begun! May this union be filled with joy and blessings."
+          data-ta="திருமண வரவேற்பு விழா தொடங்கிவிட்டது! இந்த ஒன்றிணைவு மகிழ்ச்சியாலும் ஆசீர்வாதத்தாலும் நிரம்பட்டும்.">
+          The celebration has begun! May this union be filled with joy and blessings.</p>
+
+        <p class="countdown-event-label reveal-up" data-en="until Wedding Reception at Kongu Mahal, Kunnathur"
+          data-ta="கொங்கு மஹால், குன்னத்தூரில் திருமண வரவேற்பு விழா வரை">until Wedding Reception at Kongu Mahal,
+          Kunnathur</p>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"><span></span></div>
+
     <!-- ── COUPLE ─────────────────────────────────── -->
     <section id="couple" aria-labelledby="couple-heading">
       <div class="container">
@@ -445,64 +488,29 @@
           data-ta="அழைப்பிதழைப் படித்து அல்லது பதிவிறக்கம் செய்து வைத்துக்கொள்ளுங்கள்.">Read or download the invitation
           and keep it close.</p>
 
-        <div class="invitation-pdf-card reveal-up">
-          <p id="invitation-pdf-status" class="invitation-pdf-status" role="status"
-            data-en="The invitation PDF will be available here soon."
-            data-ta="திருமண அழைப்பிதழ் PDF விரைவில் இங்கே கிடைக்கும்.">The invitation PDF will be available here soon.
-          </p>
-          <iframe id="invitation-pdf" class="invitation-pdf-frame" title="Wedding invitation PDF" loading="lazy"
-            hidden></iframe>
-          <div class="invitation-pdf-actions">
-            <a id="invitation-open" class="btn-primary" href="assets/invitation.pdf" target="_blank"
-              rel="noopener noreferrer" hidden data-en="View PDF" data-ta="PDF பார்க்க">View PDF</a>
-            <a id="invitation-download" class="btn-secondary" href="assets/invitation.pdf"
-              download="Shanmugasundaram-Srimathi-Wedding-Invitation.pdf" hidden data-en="Download Invitation"
-              data-ta="அழைப்பிதழைப் பதிவிறக்க">Download Invitation</a>
+        <div class="invitation-elegant-card reveal-up">
+          <div class="invitation-doc-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="2" width="44" height="56" rx="4" fill="#F8F0DF" stroke="#B79555" stroke-width="1.5"/>
+              <rect x="14" y="16" width="28" height="2" rx="1" fill="#B79555" opacity="0.5"/>
+              <rect x="14" y="24" width="28" height="2" rx="1" fill="#B79555" opacity="0.5"/>
+              <rect x="14" y="32" width="20" height="2" rx="1" fill="#B79555" opacity="0.5"/>
+              <path d="M38 2v14h14" stroke="#B79555" stroke-width="1.5" fill="none"/>
+              <path d="M38 2 L52 16" stroke="#B79555" stroke-width="1.5" fill="none"/>
+              <circle cx="46" cy="62" r="16" fill="#2D5016" stroke="#B79555" stroke-width="1.5"/>
+              <path d="M40 62l4 4 8-8" stroke="#F8F0DF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="invitation-elegant-title" data-en="Formal Invitation" data-ta="திருமண அழைப்பிதழ்">Formal Invitation</h3>
+          <p class="invitation-elegant-subtitle" lang="ta">திருமண அழைப்பிதழ்</p>
+          <div class="invitation-elegant-actions">
+            <a class="btn-primary" href="assets/invitation.pdf" target="_blank" rel="noopener noreferrer"
+              data-en="VIEW" data-ta="காண்க">VIEW</a>
+            <a class="btn-secondary" href="assets/invitation.pdf"
+              download="Shanmugasundaram-Srimathi-Wedding-Invitation.pdf"
+              data-en="DOWNLOAD PDF" data-ta="PDF பதிவிறக்க">DOWNLOAD PDF</a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true"><span></span></div>
-
-    <!-- ── COUNTDOWN ──────────────────────────────── -->
-    <section id="countdown" aria-labelledby="countdown-heading">
-      <div class="container">
-        <div class="section-label reveal-up" data-en="Counting Down" data-ta="நேரக்கணக்கு">Counting Down</div>
-        <h2 id="countdown-heading" class="section-title reveal-up" data-en="The Big Day Approaches"
-          data-ta="பெரிய நாள் நெருங்குகிறது">The Big Day Approaches</h2>
-
-        <div class="countdown-grid reveal-up" id="countdown-display" aria-live="polite"
-          aria-label="Countdown to wedding reception">
-          <div class="countdown-unit">
-            <span class="countdown-number" id="cd-days">--</span>
-            <span class="countdown-label" data-en="Days" data-ta="நாட்கள்">Days</span>
-          </div>
-          <div class="countdown-separator" aria-hidden="true">:</div>
-          <div class="countdown-unit">
-            <span class="countdown-number" id="cd-hours">--</span>
-            <span class="countdown-label" data-en="Hours" data-ta="மணி">Hours</span>
-          </div>
-          <div class="countdown-separator" aria-hidden="true">:</div>
-          <div class="countdown-unit">
-            <span class="countdown-number" id="cd-minutes">--</span>
-            <span class="countdown-label" data-en="Minutes" data-ta="நிமிடம்">Minutes</span>
-          </div>
-          <div class="countdown-separator" aria-hidden="true">:</div>
-          <div class="countdown-unit">
-            <span class="countdown-number" id="cd-seconds">--</span>
-            <span class="countdown-label" data-en="Seconds" data-ta="நொடி">Seconds</span>
-          </div>
-        </div>
-
-        <p id="countdown-post" class="countdown-post" style="display:none;"
-          data-en="The celebration has begun! May this union be filled with joy and blessings."
-          data-ta="திருமண வரவேற்பு விழா தொடங்கிவிட்டது! இந்த ஒன்றிணைவு மகிழ்ச்சியாலும் ஆசீர்வாதத்தாலும் நிரம்பட்டும்.">
-          The celebration has begun! May this union be filled with joy and blessings.</p>
-
-        <p class="countdown-event-label reveal-up" data-en="until Wedding Reception at Kongu Mahal, Kunnathur"
-          data-ta="கொங்கு மஹால், குன்னத்தூரில் திருமண வரவேற்பு விழா வரை">until Wedding Reception at Kongu Mahal,
-          Kunnathur</p>
       </div>
     </section>
 
@@ -584,11 +592,11 @@
             data-ta="வாழ்த்துக்கள் அனுப்பு ♥" disabled>Send Wishes ♥</button>
         </form>
 
-        <!-- Wishes display -->
-        <div class="wishes-display-section reveal-up">
+        <!-- Wishes display — hidden from public view; data is preserved in the database -->
+        <div class="wishes-display-section" hidden aria-hidden="true">
           <h3 class="wishes-display-title" data-en="Wishes from Our Loved Ones"
             data-ta="எங்கள் அன்பானவர்களின் வாழ்த்துக்கள்">Wishes from Our Loved Ones</h3>
-          <div id="wishes-display" class="wishes-display" aria-live="polite" aria-label="Guest wishes"></div>
+          <div id="wishes-display" class="wishes-display" aria-live="off" aria-label="Guest wishes"></div>
         </div>
         <button id="wishes-load-more" class="btn-secondary wishes-load-more" type="button" hidden
           data-en="View more wishes" data-ta="மேலும் வாழ்த்துகளைக் காண">View more wishes</button>
@@ -596,15 +604,11 @@
         <!-- Contact info -->
         <div class="contact-info reveal-up">
           <h3 class="contact-title" data-en="Contact" data-ta="தொடர்பு">Contact</h3>
-          <div class="contact-grid">
+          <div class="contact-grid contact-grid--single">
             <div class="contact-card">
-              <p class="contact-family" data-en="Bride's Family" data-ta="மணமகளின் குடும்பம்">Bride's Family</p>
-              <a href="tel:+917598429215" class="contact-phone">+91 75984 29215</a>
-              <a href="tel:+919443929215" class="contact-phone">+91 94439 29215</a>
-            </div>
-            <div class="contact-card">
-              <p class="contact-family" data-en="Groom's Family" data-ta="மணமகனின் குடும்பம்">Groom's Family</p>
-              <a href="tel:+919688813018" class="contact-phone">+91 96888 13018</a>
+              <p class="contact-family" data-en="Bride's Brother" data-ta="மணமகளின் அண்ணன்">Bride's Brother</p>
+              <p class="contact-name">Santhosh Prabhu R</p>
+              <a href="tel:+917812842241" class="contact-phone">+91 78128 42241</a>
             </div>
           </div>
         </div>
@@ -636,6 +640,17 @@
         <p class="footer-blessing-en" data-en="May this union be blessed with love, joy, and prosperity."
           data-ta="இந்த ஒன்றிணைவு அன்பு, மகிழ்ச்சி மற்றும் செழிப்புடன் ஆசீர்வதிக்கப்படட்டும்.">May this union be blessed
           with love, joy, and prosperity.</p>
+
+        <!-- WhatsApp share button -->
+        <div class="footer-whatsapp-wrap">
+          <a id="footer-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer"
+            class="footer-whatsapp-btn" aria-label="Share on WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            <span>SHARE ON WHATSAPP</span>
+          </a>
+        </div>
 
         <div class="footer-bottom">
           <p data-en="Made with ♥ for a beautiful celebration"

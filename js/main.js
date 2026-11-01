@@ -403,70 +403,51 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   }
 })();
 
-/* ── 6. ADD TO CALENDAR ────────────────────────── */
+/* ── 6. ADD TO CALENDAR (Google Calendar) ───────── */
 function addToCalendar() {
-  // ICS format: YYYYMMDDTHHMMSSZ
-  // Reception: 16 Nov 2026, 11:00 AM – 3:00 PM IST (= 05:30 UTC, 09:30 UTC)
-  const ics = [
-    'BEGIN:VCALENDAR',
-    'VERSION:2.0',
-    'PRODID:-//Shanmugasundaram Srimathi Wedding//EN',
-    'BEGIN:VEVENT',
-    'UID:srimathi-shanmugasundaram-wedding-2026@invitation',
-    'DTSTAMP:' + formatICS(new Date()),
-    'DTSTART;TZID=Asia/Kolkata:20261116T110000',
-    'DTEND;TZID=Asia/Kolkata:20261116T150000',
-    'SUMMARY:Wedding Reception — N. Shanmugasundaram & R. Srimathi',
-    'DESCRIPTION:You are cordially invited to the Wedding Reception of N. Shanmugasundaram DECE. & R. Srimathi B.Sc. Please join us with your family and friends.',
-    'LOCATION:Kongu Mahal\\, Chengapalli Road\\, Kunnathur\\, Tiruppur District\\, Tamil Nadu',
-    'BEGIN:VALARM',
-    'TRIGGER:-PT1D',
-    'ACTION:DISPLAY',
-    'DESCRIPTION:Wedding Reception tomorrow — Kongu Mahal\\, Kunnathur',
-    'END:VALARM',
-    'END:VEVENT',
-    'END:VCALENDAR'
-  ].join('\r\n');
+  // Google Calendar event creation URL
+  // Event: 16 Nov 2026, 11:00 AM – 3:00 PM IST (Asia/Kolkata)
+  var eventTitle = 'N. Shanmugasundaram \u2665 R. Srimathi \u2013 Wedding Reception';
+  var startDate  = '20261116T110000';
+  var endDate    = '20261116T150000';
+  var location   = 'Kongu Mahal, Chengapalli Road, Kunnathur';
+  var details    = 'You are cordially invited to the Wedding Reception of N. Shanmugasundaram & R. Srimathi.'
+    + ' Please join us with your family and friends.'
+    + '\n\nDate: Monday, 16 November 2026'
+    + '\nTime: 11:00 AM \u2013 3:00 PM'
+    + '\nVenue: Kongu Mahal, Chengapalli Road, Kunnathur'
+    + '\n\n\u23F0 Reminder tip: After saving, open the event and set a reminder for 2 hours before (9:00 AM).';
+  var timezone   = 'Asia/Kolkata';
 
-  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
-  const url  = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href     = url;
-  link.download = 'Shanmugasundaram-Srimathi-Wedding-Reception.ics';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
+  var url = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+    + '&text='     + encodeURIComponent(eventTitle)
+    + '&dates='    + encodeURIComponent(startDate) + '%2F' + encodeURIComponent(endDate)
+    + '&location=' + encodeURIComponent(location)
+    + '&details='  + encodeURIComponent(details)
+    + '&ctz='      + encodeURIComponent(timezone);
+
+  window.open(url, '_blank', 'noopener,noreferrer');
 }
 
-function formatICS(date) {
-  return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-}
-
-/* ── 7. INVITATION PDF + DOM READY ──────────────── */
+/* ── 7. DOM READY ───────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('#hero .reveal-up').forEach(el => el.classList.add('visible'));
 
-  const pdfFrame = document.getElementById('invitation-pdf');
-  const pdfStatus = document.getElementById('invitation-pdf-status');
-  const pdfOpen = document.getElementById('invitation-open');
-  const pdfDownload = document.getElementById('invitation-download');
-  const pdfUrl = 'assets/invitation.pdf';
-
-  if (pdfFrame && pdfStatus && pdfOpen && pdfDownload) {
-    fetch(pdfUrl, { method: 'HEAD' })
-      .then((response) => {
-        if (!response.ok) throw new Error(`Invitation PDF is not available (${response.status}).`);
-        pdfFrame.src = pdfUrl;
-        pdfFrame.hidden = false;
-        pdfOpen.hidden = false;
-        pdfDownload.hidden = false;
-        pdfStatus.hidden = true;
-      })
-      .catch((error) => {
-        console.info('Invitation PDF has not been added yet.', error);
-        pdfStatus.hidden = false;
-      });
+  // ── Footer WhatsApp share button ─────────────────
+  var waBtn = document.getElementById('footer-whatsapp-btn');
+  if (waBtn) {
+    var waMessage = 'After years of debugging life, we have finally decided to deploy Marriage v1.0! \u2764\uFE0F\n\n'
+      + 'N. Shanmugasundaram & R. Srimathi cordially invite you!\n\n'
+      + '\uD83D\uDCC5 16 November 2026 \u2013 Wedding Reception\n'
+      + '\u23F0 11:00 AM \u2013 03:00 PM\n\n'
+      + 'The countdown is over. The big day is here! \uD83D\uDC8D\n'
+      + 'One lifetime commitment. Unlimited memories.\n'
+      + 'Let\u2019s celebrate this beautiful new beginning!\n\n'
+      + '\uD83D\uDCCD Venue: Kongu Mahal, Chengapalli Road, Kunnathur.\n\n'
+      + 'Don\u2019t miss this live event\u2014there won\u2019t be a replay!\n\n'
+      + 'See you there! \u2764\uFE0F\n\n'
+      + '\uD83D\uDD17 ' + window.location.href;
+    waBtn.href = 'https://wa.me/?text=' + encodeURIComponent(waMessage);
   }
 
   // Remove loading state after fonts are ready
