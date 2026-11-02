@@ -1,0 +1,166 @@
+/**
+ * ═══════════════════════════════════════════════════════
+ * FLORAL ROMANCE — floral-romance.css
+ * Continuous Falling Petals & Click/Tap Flower Bursts
+ * Shanmugasundaram × Srimathi | 16 November 2026
+ * ═══════════════════════════════════════════════════════
+ *
+ * Stacking (never modifies existing z-index values):
+ *   .deco-bg              → z-index: 0   (existing, untouched)
+ *   #main-content         → z-index: 1   (existing, untouched)
+ *   .floral-falling-layer → z-index: 2   ← sits just above main content
+ *   .floral-burst-layer   → z-index: 3   ← bursts appear above petals
+ *   #main-nav             → z-index: 900 (existing, untouched)
+ *   #theme-fab / panel    → z-index: 9050–9200 (existing, untouched)
+ *
+ * Both layers use pointer-events: none — they NEVER intercept any
+ * click, tap, scroll, hover or keyboard event.
+ */
+
+/* ── Hidden SVG gradient/filter defs ────────────────── */
+.floral-svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* ══════════════════════════════════════════════════════
+   FALLING PETALS LAYER
+   ══════════════════════════════════════════════════════ */
+.floral-falling-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none !important;
+  user-select: none;
+  -webkit-user-select: none;
+  z-index: 2;
+  overflow: hidden;
+  contain: strict;
+}
+
+/* ── Outer wrapper: controls vertical fall ─────────── */
+.fp-wrap {
+  position: absolute;
+  top: 0;
+  left: var(--left, 50%);
+  width: var(--sz, 22px);
+  height: calc(var(--sz, 22px) * 1.2);
+  pointer-events: none !important;
+  opacity: var(--op, 0.72);
+  will-change: transform;
+  animation: fp-fall var(--fd, 11s) var(--del, 0s) linear infinite;
+}
+
+@keyframes fp-fall {
+  from { transform: translateY(-60px); }
+  to   { transform: translateY(calc(100vh + 70px)); }
+}
+
+/* ── Middle: sinusoidal horizontal sway ────────────── */
+.fp-sway {
+  width: 100%;
+  height: 100%;
+  pointer-events: none !important;
+  will-change: transform;
+  animation: fp-sway var(--sd, 3.5s) ease-in-out infinite alternate;
+}
+
+@keyframes fp-sway {
+  from { transform: translateX(calc(var(--sx, 30px) * -1)); }
+  to   { transform: translateX(var(--sx, 30px)); }
+}
+
+/* ── Inner: 3-D tumble ─────────────────────────────── */
+.fp-tumble {
+  width: 100%;
+  height: 100%;
+  pointer-events: none !important;
+  will-change: transform;
+  animation: fp-tumble calc(var(--fd, 11s) * 0.78) ease-in-out infinite;
+}
+
+@keyframes fp-tumble {
+  0%   { transform: scale(var(--sc,1)) rotateZ(var(--r0,0deg)) rotateY(0deg) rotateX(0deg); }
+  50%  { transform: scale(calc(var(--sc,1)*.84)) rotateZ(calc((var(--r0,0deg)+var(--r1,360deg))*.5)) rotateY(180deg) rotateX(55deg); }
+  100% { transform: scale(var(--sc,1)) rotateZ(var(--r1,360deg)) rotateY(360deg) rotateX(0deg); }
+}
+
+/* ── SVG petal ─────────────────────────────────────── */
+.fp-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none !important;
+  overflow: visible;
+  filter: drop-shadow(0 2px 3px rgba(183,149,85,0.15));
+}
+
+/* ══════════════════════════════════════════════════════
+   CLICK / TAP BURST LAYER
+   ══════════════════════════════════════════════════════ */
+.floral-burst-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none !important;
+  user-select: none;
+  -webkit-user-select: none;
+  z-index: 3;
+  overflow: hidden;
+}
+
+/* Zero-size origin anchored to click coords */
+.fb-origin {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none !important;
+}
+
+/* Individual burst particle */
+.fb-particle {
+  position: absolute;
+  top: calc(var(--sz, 22px) * -0.5);
+  left: calc(var(--sz, 22px) * -0.5);
+  width: var(--sz, 22px);
+  height: calc(var(--sz, 22px) * 1.2);
+  pointer-events: none !important;
+  will-change: transform, opacity;
+  animation: fb-fly var(--bd, 850ms) var(--bdel, 0ms) cubic-bezier(0.12,0.75,0.28,1) forwards;
+}
+
+@keyframes fb-fly {
+  0%   { transform: translate3d(0,0,0) scale(0.2) rotate(0deg); opacity: 0; }
+  14%  { transform: translate3d(var(--mx,0px),var(--my,-20px),0) scale(var(--sc,0.9)) rotate(calc(var(--rot,90deg)*.3)); opacity: 1; }
+  62%  { opacity: 0.88; }
+  100% { transform: translate3d(var(--tx,0px),var(--ty,60px),0) scale(calc(var(--sc,0.9)*.35)) rotate(var(--rot,180deg)); opacity: 0; }
+}
+
+/* ══════════════════════════════════════════════════════
+   THEME-SPECIFIC GLOW
+   ══════════════════════════════════════════════════════ */
+[data-theme="midnight"] .fp-svg {
+  filter: drop-shadow(0 2px 6px rgba(247,202,208,0.42))
+          drop-shadow(0 0 10px rgba(123,108,240,0.22));
+}
+[data-theme="sage"] .fp-svg {
+  filter: drop-shadow(0 2px 4px rgba(62,107,56,0.2));
+}
+
+/* ══════════════════════════════════════════════════════
+   ACCESSIBILITY
+   ══════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .floral-falling-layer,
+  .floral-burst-layer { display: none !important; }
+}
+
+/* Pause when tab is hidden (JS adds .fr-paused to <html>) */
+.fr-paused .fp-wrap,
+.fr-paused .fp-sway,
+.fr-paused .fp-tumble {
+  animation-play-state: paused !important;
+}
+
