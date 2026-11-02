@@ -1,0 +1,815 @@
+/* =====================================================
+   WEDDING THEME STUDIO — theme-studio.css
+   3 Themes · 3 Font pairs · Dark Midnight support
+   Shanmugasundaram × Srimathi | 16 November 2026
+   ===================================================== */
+
+/* ──────────────────────────────────────────────────────
+   1. THEME TOKEN DEFINITIONS
+   Re-maps the CSS variables that styles.css already uses,
+   so every existing rule updates automatically.
+   ────────────────────────────────────────────────────── */
+
+/* ── Royal Burgundy (default) ─────────────────────── */
+[data-theme="burgundy"] {
+  --ivory:       #F8F0DF;
+  --ivory-dark:  #F0E4C8;
+  --burgundy:    #701E32;
+  --burgundy-l:  #8B2741;
+  --gold:        #B79555;
+  --gold-l:      #CCA96A;
+  --gold-d:      #8E6E38;
+  --vermilion:   #C74B32;
+  --text-dark:   #493626;
+  --text-mid:    #6B4F3A;
+  --text-light:  #9A7A60;
+  --white:       #FFFFFF;
+  --forest:      #2D5016;
+}
+
+/* ── Midnight — TRUE DARK theme ────────────────────── */
+/*   Deep navy surfaces · charcoal cards · violet accents
+     Every section gets a dark background — no cream/white */
+[data-theme="midnight"] {
+  --ivory:       #1A1D2E;   /* page background — deepest navy */
+  --ivory-dark:  #141626;   /* alternate section — even darker */
+  --burgundy:    #7B6CF0;   /* primary accent — muted violet   */
+  --burgundy-l:  #9B8FF8;   /* lighter violet                  */
+  --gold:        #8A9BB8;   /* silver-blue accent              */
+  --gold-l:      #AAB8D0;   /* lighter silver                  */
+  --gold-d:      #6A7D9A;   /* darker silver                   */
+  --vermilion:   #9B8FF8;   /* highlight / heart               */
+  --text-dark:   #E8ECF8;   /* primary text — near white       */
+  --text-mid:    #B0BCDA;   /* secondary text                  */
+  --text-light:  #7A8AAA;   /* muted text                      */
+  --white:       #222538;   /* card background — charcoal-navy */
+  --forest:      #7B6CF0;
+}
+
+/* ── Sage Romance ─────────────────────────────────── */
+[data-theme="sage"] {
+  --ivory:       #F4F2EC;
+  --ivory-dark:  #E8E4DA;
+  --burgundy:    #3E6B38;
+  --burgundy-l:  #528A4A;
+  --gold:        #B0A060;
+  --gold-l:      #C8BC82;
+  --gold-d:      #847640;
+  --vermilion:   #8D6E50;
+  --text-dark:   #243320;
+  --text-mid:    #3E5238;
+  --text-light:  #6E8464;
+  --white:       #FAFAF6;
+  --forest:      #3E6B38;
+}
+
+/* ──────────────────────────────────────────────────────
+   2. FONT PAIR DEFINITIONS
+   ────────────────────────────────────────────────────── */
+
+[data-font="classic"] {
+  --font-serif:  'Cormorant Garamond', 'Georgia', serif;
+  --font-script: 'Great Vibes', cursive;
+  --font-sans:   'Lato', 'Helvetica Neue', sans-serif;
+}
+[data-font="romantic"] {
+  --font-serif:  'Playfair Display', 'Times New Roman', serif;
+  --font-script: 'Pinyon Script', 'Great Vibes', cursive;
+  --font-sans:   'EB Garamond', 'Georgia', serif;
+}
+[data-font="modern"] {
+  --font-serif:  'Libre Baskerville', 'Georgia', serif;
+  --font-script: 'Great Vibes', cursive;
+  --font-sans:   'DM Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* ──────────────────────────────────────────────────────
+   3. LIGHT-THEME AWARE OVERRIDES  (burgundy + sage)
+   ────────────────────────────────────────────────────── */
+
+[data-theme] body                         { background-color: var(--ivory); color: var(--text-dark); }
+[data-theme] #hero                        { background: var(--ivory); }
+[data-theme] #couple                      { background: var(--ivory); }
+[data-theme] #events                      { background: var(--ivory-dark); }
+[data-theme] #invitation                  { background: var(--ivory); }
+[data-theme] #location                    { background: var(--ivory-dark); }
+[data-theme] #wishes                      { background: var(--ivory); }
+
+/* Countdown */
+[data-theme] #countdown                   { background: var(--burgundy); }
+[data-theme] #countdown .section-label   { color: var(--gold-l); }
+[data-theme] #countdown .section-title   { color: var(--ivory); }
+[data-theme] .countdown-number           { color: var(--ivory); }
+[data-theme] .countdown-label            { color: var(--gold-l); }
+[data-theme] .countdown-separator        { color: var(--gold); opacity: 0.7; }
+[data-theme] .countdown-post             { color: var(--gold-l); }
+[data-theme] .countdown-event-label      { color: rgba(248,240,223,0.65); }
+[data-theme] .countdown-unit             { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.12); }
+
+/* Footer */
+[data-theme] #site-footer                { background: var(--text-dark); color: var(--ivory); }
+[data-theme] .footer-names               { color: var(--gold-l); }
+[data-theme] .footer-date                { color: rgba(248,240,223,0.6); }
+[data-theme] .footer-blessing            { color: var(--gold); }
+[data-theme] .footer-blessing-en         { color: rgba(248,240,223,0.55); }
+[data-theme] .footer-bottom              { color: rgba(248,240,223,0.3); border-color: rgba(183,149,85,0.15); }
+[data-theme] .footer-bottom p            { color: rgba(248,240,223,0.3); }
+
+/* Navigation */
+[data-theme] #main-nav                   { background: color-mix(in srgb, var(--ivory) 92%, transparent); border-color: color-mix(in srgb, var(--gold) 20%, transparent); }
+[data-theme] .nav-logo                   { color: var(--burgundy); }
+[data-theme] .nav-logo-symbol,
+[data-theme] .nav-logo-amp               { color: var(--gold); }
+[data-theme] #nav-links a                { color: var(--text-dark); }
+[data-theme] #nav-links a:hover          { color: var(--burgundy); background: color-mix(in srgb, var(--burgundy) 8%, transparent); }
+[data-theme] #mobile-menu-btn span       { background: var(--burgundy); }
+[data-theme] #lang-toggle                { color: var(--burgundy); border-color: var(--gold); }
+[data-theme] #lang-toggle:hover          { background: var(--burgundy); color: var(--ivory); }
+
+/* Section typography */
+[data-theme] .section-label              { color: var(--gold-d); }
+[data-theme] .section-title              { color: var(--burgundy); }
+[data-theme] .section-subtitle           { color: var(--text-mid); }
+[data-theme] .section-divider span       { background: var(--gold); }
+
+/* Buttons */
+[data-theme] .btn-primary                { background: var(--burgundy); color: var(--ivory); }
+[data-theme] .btn-primary:hover,
+[data-theme] .btn-primary:focus          { background: var(--burgundy-l); }
+[data-theme] .btn-secondary              { color: var(--burgundy); border-color: var(--burgundy); background: transparent; }
+[data-theme] .btn-secondary:hover,
+[data-theme] .btn-secondary:focus        { background: var(--burgundy); color: var(--ivory); }
+
+/* Cards */
+[data-theme] .couple-card,
+[data-theme] .event-card,
+[data-theme] .location-card,
+[data-theme] .contact-card,
+[data-theme] .wish-card                  { background: var(--white); border-color: color-mix(in srgb, var(--gold) 25%, transparent); }
+[data-theme] .invitation-elegant-card    { background: color-mix(in srgb, var(--ivory) 95%, var(--white)); border-color: color-mix(in srgb, var(--gold) 38%, transparent); }
+
+/* Couple */
+[data-theme] .couple-role                { color: var(--burgundy); }
+[data-theme] .couple-name                { color: var(--text-dark); }
+[data-theme] .couple-qualification       { color: var(--text-mid); }
+[data-theme] .parents-label,
+[data-theme] .parents-names,
+[data-theme] .parents-location          { color: var(--text-mid); }
+[data-theme] .couple-heart               { color: var(--vermilion); }
+[data-theme] .couple-divider-line        { background: var(--gold); }
+
+/* Hero */
+[data-theme] .hero-sub-heading           { color: var(--gold-d); }
+[data-theme] .hero-name                  { color: var(--burgundy); }
+[data-theme] .hero-name-role             { color: var(--text-mid); }
+[data-theme] .hero-date                  { color: var(--gold-d); }
+[data-theme] .hero-venue                 { color: var(--text-mid); }
+[data-theme] .hero-blessings             { color: var(--gold-d); }
+[data-theme] .blessings-dot              { color: var(--gold); }
+
+/* Event card */
+[data-theme] .event-card-accent          { background: var(--burgundy); }
+[data-theme] .event-name                 { color: var(--burgundy); }
+[data-theme] .event-detail               { color: var(--text-mid); }
+[data-theme] .event-btn                  { background: var(--burgundy); color: var(--ivory); }
+[data-theme] .event-btn:hover            { background: var(--burgundy-l); }
+[data-theme] .event-btn-outline          { background: transparent; color: var(--burgundy); border-color: var(--burgundy); }
+[data-theme] .event-btn-outline:hover    { background: var(--burgundy); color: var(--ivory); }
+
+/* Invite message */
+[data-theme] .invite-message-border      { background: var(--gold); }
+[data-theme] .invite-tamil               { color: var(--text-mid); }
+
+/* Location */
+[data-theme] .location-venue             { color: var(--burgundy); }
+[data-theme] .location-address           { color: var(--text-mid); }
+
+/* Invitation card */
+[data-theme] .invitation-elegant-title   { color: var(--burgundy); }
+[data-theme] .invitation-elegant-subtitle { color: var(--gold); }
+
+/* Wishes */
+[data-theme] .wishes-form label          { color: var(--text-dark); }
+[data-theme] .wishes-form input,
+[data-theme] .wishes-form textarea       { border-color: color-mix(in srgb, var(--gold) 35%, transparent); background: var(--white); color: var(--text-dark); }
+[data-theme] .wishes-form input:focus,
+[data-theme] .wishes-form textarea:focus { border-color: var(--gold); }
+[data-theme] .wishes-display-title       { color: var(--burgundy); }
+[data-theme] .wish-name                  { color: var(--burgundy); }
+[data-theme] .wish-text                  { color: var(--text-mid); }
+[data-theme] .wish-date                  { color: var(--text-light); }
+
+/* Contact */
+[data-theme] .contact-title              { color: var(--gold-d); }
+[data-theme] .contact-family             { color: var(--text-light); }
+[data-theme] .contact-name               { color: var(--burgundy); }
+[data-theme] .contact-phone              { color: var(--text-dark); }
+[data-theme] .contact-phone:hover        { color: var(--burgundy); }
+
+/* WhatsApp btn */
+[data-theme] .whatsapp-btn               { background: #25D366; color: #fff; }
+[data-theme] .footer-whatsapp-btn        { background: #25D366; color: #fff; }
+
+/* Skip link */
+[data-theme] .skip-link                  { background: var(--burgundy); color: var(--ivory); }
+
+/* ──────────────────────────────────────────────────────
+   4. MIDNIGHT DARK THEME — specific overrides
+   All surfaces are dark; text is light.
+   ────────────────────────────────────────────────────── */
+
+/* ── Countdown — use dark surface instead of primary for better contrast */
+[data-theme="midnight"] #countdown {
+  background: #0F1120;
+}
+[data-theme="midnight"] #countdown::before {
+  background: radial-gradient(ellipse at 30% 50%, rgba(123,108,240,0.18), transparent 60%),
+              radial-gradient(ellipse at 70% 50%, rgba(155,143,248,0.10), transparent 60%);
+}
+[data-theme="midnight"] #countdown .section-label { color: var(--gold-l); }
+[data-theme="midnight"] #countdown .section-title { color: var(--text-dark); }
+[data-theme="midnight"] .countdown-number         { color: var(--text-dark); }
+[data-theme="midnight"] .countdown-label          { color: var(--gold-l); }
+[data-theme="midnight"] .countdown-separator      { color: var(--gold); }
+[data-theme="midnight"] .countdown-post           { color: var(--gold-l); }
+[data-theme="midnight"] .countdown-event-label    { color: var(--text-mid); }
+[data-theme="midnight"] .countdown-unit {
+  background: rgba(123,108,240,0.12);
+  border-color: rgba(123,108,240,0.25);
+}
+
+/* ── Navigation */
+[data-theme="midnight"] #main-nav {
+  background: rgba(22,25,45,0.95);
+  border-bottom-color: rgba(123,108,240,0.2);
+}
+[data-theme="midnight"] .nav-logo              { color: var(--burgundy); }
+[data-theme="midnight"] #nav-links a           { color: var(--text-dark); }
+[data-theme="midnight"] #nav-links a:hover     { color: var(--burgundy); background: rgba(123,108,240,0.12); }
+[data-theme="midnight"] #nav-links             { background: #1A1D2E; }
+[data-theme="midnight"] #lang-toggle           { color: var(--gold-l); border-color: var(--gold); }
+[data-theme="midnight"] #lang-toggle:hover     { background: var(--burgundy); color: #fff; }
+
+/* ── Section backgrounds */
+[data-theme="midnight"] #hero       { background: var(--ivory); }
+[data-theme="midnight"] #couple     { background: var(--ivory); }
+[data-theme="midnight"] #events     { background: var(--ivory-dark); }
+[data-theme="midnight"] #invitation { background: var(--ivory); }
+[data-theme="midnight"] #location   { background: var(--ivory-dark); }
+[data-theme="midnight"] #wishes     { background: var(--ivory); }
+
+/* ── Dividers */
+[data-theme="midnight"] .section-divider {
+  background: linear-gradient(90deg, transparent, rgba(123,108,240,0.25), transparent);
+}
+[data-theme="midnight"] .section-divider span {
+  background: var(--gold);
+}
+
+/* ── Cards — all use charcoal-navy bg */
+[data-theme="midnight"] .couple-card,
+[data-theme="midnight"] .event-card,
+[data-theme="midnight"] .location-card,
+[data-theme="midnight"] .contact-card,
+[data-theme="midnight"] .wish-card {
+  background: var(--white);  /* = #222538 charcoal-navy */
+  border-color: rgba(123,108,240,0.2);
+  color: var(--text-dark);
+}
+[data-theme="midnight"] .invitation-elegant-card {
+  background: #1E2236;
+  border-color: rgba(123,108,240,0.3);
+}
+
+/* ── Invitation icon badge */
+[data-theme="midnight"] .invitation-doc-icon circle {
+  fill: var(--burgundy);
+}
+[data-theme="midnight"] .invitation-elegant-title   { color: var(--burgundy); }
+[data-theme="midnight"] .invitation-elegant-subtitle { color: var(--gold); }
+
+/* ── Buttons */
+[data-theme="midnight"] .btn-primary       { background: var(--burgundy); color: #fff; }
+[data-theme="midnight"] .btn-primary:hover { background: var(--burgundy-l); }
+[data-theme="midnight"] .btn-secondary     { color: var(--burgundy); border-color: var(--burgundy); }
+[data-theme="midnight"] .btn-secondary:hover { background: var(--burgundy); color: #fff; }
+
+/* ── Event card buttons */
+[data-theme="midnight"] .event-btn         { background: var(--burgundy); color: #fff; }
+[data-theme="midnight"] .event-btn:hover   { background: var(--burgundy-l); }
+[data-theme="midnight"] .event-btn-outline { color: var(--burgundy); border-color: var(--burgundy); }
+[data-theme="midnight"] .event-btn-outline:hover { background: var(--burgundy); color: #fff; }
+
+/* ── Hero section */
+[data-theme="midnight"] #hero::before {
+  opacity: 0.04;
+}
+[data-theme="midnight"] .hero-arch         { color: rgba(123,108,240,0.35); }
+[data-theme="midnight"] .hero-kolam        { color: rgba(138,155,184,0.25); }
+[data-theme="midnight"] .hero-blessings    { color: var(--gold); }
+[data-theme="midnight"] .blessings-dot     { color: var(--gold); }
+[data-theme="midnight"] .hero-sub-heading  { color: var(--gold); }
+[data-theme="midnight"] .hero-heading      { color: var(--text-dark); }
+[data-theme="midnight"] .hero-name         { color: var(--burgundy); }
+[data-theme="midnight"] .hero-name-role    { color: var(--text-mid); }
+[data-theme="midnight"] .hero-date         { color: var(--gold); }
+[data-theme="midnight"] .hero-venue        { color: var(--text-mid); }
+
+/* ── Couple section */
+[data-theme="midnight"] .couple-role       { color: var(--burgundy); }
+[data-theme="midnight"] .couple-name       { color: var(--text-dark); }
+[data-theme="midnight"] .couple-qualification { color: var(--text-mid); }
+[data-theme="midnight"] .parents-label,
+[data-theme="midnight"] .parents-names,
+[data-theme="midnight"] .parents-location  { color: var(--text-mid); }
+[data-theme="midnight"] .couple-heart      { color: var(--burgundy); }
+
+/* ── Event section */
+[data-theme="midnight"] .event-card-accent { background: var(--burgundy); }
+[data-theme="midnight"] .event-name        { color: var(--text-dark); }
+[data-theme="midnight"] .event-detail      { color: var(--text-mid); }
+
+/* ── Location */
+[data-theme="midnight"] .location-venue   { color: var(--burgundy); }
+[data-theme="midnight"] .location-address { color: var(--text-mid); }
+
+/* ── Invite message */
+[data-theme="midnight"] .invite-message-border { background: var(--gold); }
+[data-theme="midnight"] .invite-tamil      { color: var(--text-mid); }
+
+/* ── Section labels/titles */
+[data-theme="midnight"] .section-label    { color: var(--gold); }
+[data-theme="midnight"] .section-title    { color: var(--text-dark); }
+[data-theme="midnight"] .section-subtitle { color: var(--text-mid); }
+
+/* ── Wishes form */
+[data-theme="midnight"] .wishes-form label   { color: var(--text-dark); }
+[data-theme="midnight"] .wishes-form input,
+[data-theme="midnight"] .wishes-form textarea {
+  background: #1E2236;
+  border-color: rgba(123,108,240,0.3);
+  color: var(--text-dark);
+}
+[data-theme="midnight"] .wishes-form input::placeholder,
+[data-theme="midnight"] .wishes-form textarea::placeholder { color: var(--text-light); }
+[data-theme="midnight"] .wishes-form input:focus,
+[data-theme="midnight"] .wishes-form textarea:focus {
+  border-color: var(--burgundy);
+  box-shadow: 0 0 0 3px rgba(123,108,240,0.15);
+}
+[data-theme="midnight"] .form-note           { color: var(--text-mid); }
+[data-theme="midnight"] .wishes-display-title { color: var(--text-dark); }
+[data-theme="midnight"] .wish-name           { color: var(--burgundy); }
+[data-theme="midnight"] .wish-text           { color: var(--text-mid); }
+[data-theme="midnight"] .wish-date           { color: var(--text-light); }
+
+/* ── Contact */
+[data-theme="midnight"] .contact-title     { color: var(--gold); }
+[data-theme="midnight"] .contact-family    { color: var(--text-mid); }
+[data-theme="midnight"] .contact-name      { color: var(--text-dark); }
+[data-theme="midnight"] .contact-phone     { color: var(--text-mid); }
+[data-theme="midnight"] .contact-phone:hover { color: var(--burgundy); }
+
+/* ── Footer */
+[data-theme="midnight"] #site-footer        { background: #0A0C18; }
+[data-theme="midnight"] .footer-names       { color: var(--gold-l); }
+[data-theme="midnight"] .footer-date        { color: var(--text-light); }
+[data-theme="midnight"] .footer-blessing    { color: var(--gold); }
+[data-theme="midnight"] .footer-blessing-en { color: var(--text-light); }
+[data-theme="midnight"] .footer-bottom      { color: var(--text-light); border-color: rgba(123,108,240,0.15); }
+[data-theme="midnight"] .footer-bottom p    { color: var(--text-light); }
+[data-theme="midnight"] .footer-ornament    { opacity: 0.4; }
+
+/* ── Decorative background (subtle, don't overpower dark) */
+[data-theme="midnight"] .deco-bg            { opacity: 0.06; }
+
+/* ── DARK PANEL when Midnight is active ── */
+[data-theme="midnight"] #theme-panel {
+  background: rgba(22,25,45,0.97);
+  border-color: rgba(123,108,240,0.25);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.55), 0 12px 30px rgba(0,0,0,0.35), inset 0 1px 0 rgba(123,108,240,0.12);
+}
+[data-theme="midnight"] .ts-header {
+  background: linear-gradient(135deg, rgba(30,34,54,0.8) 0%, rgba(22,25,45,0.6) 100%);
+  border-bottom-color: rgba(123,108,240,0.15);
+}
+[data-theme="midnight"] .ts-title           { color: #E8ECF8; }
+[data-theme="midnight"] .ts-subtitle        { color: #7A8AAA; }
+[data-theme="midnight"] .ts-close           { background: rgba(255,255,255,0.07); color: #8A9BB8; }
+[data-theme="midnight"] .ts-close:hover     { background: rgba(255,255,255,0.13); color: #E8ECF8; }
+[data-theme="midnight"] .ts-group-label     { color: #7A8AAA; }
+[data-theme="midnight"] .ts-theme-row,
+[data-theme="midnight"] .ts-font-row        { background: rgba(255,255,255,0.04); }
+[data-theme="midnight"] .ts-theme-row:hover,
+[data-theme="midnight"] .ts-font-row:hover  { background: rgba(123,108,240,0.12); }
+[data-theme="midnight"] .ts-theme-row.ts-active,
+[data-theme="midnight"] .ts-font-row.ts-active {
+  background: rgba(123,108,240,0.14);
+  border-color: var(--burgundy);
+}
+[data-theme="midnight"] .ts-theme-name,
+[data-theme="midnight"] .ts-font-name       { color: #E8ECF8; }
+[data-theme="midnight"] .ts-theme-desc,
+[data-theme="midnight"] .ts-font-pair       { color: #7A8AAA; }
+[data-theme="midnight"] .ts-check           { border-color: rgba(138,155,184,0.3); }
+[data-theme="midnight"] .ts-theme-row.ts-active .ts-check,
+[data-theme="midnight"] .ts-font-row.ts-active .ts-check {
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+}
+[data-theme="midnight"] .ts-font-glyph      { background: rgba(255,255,255,0.05); border-color: rgba(123,108,240,0.2); }
+[data-theme="midnight"] .ts-font-glyph span { color: var(--burgundy); }
+[data-theme="midnight"] .ts-divider         { background: rgba(123,108,240,0.15); }
+[data-theme="midnight"] .ts-reset           { border-color: rgba(138,155,184,0.25); color: #7A8AAA; }
+[data-theme="midnight"] .ts-reset:hover     { background: rgba(123,108,240,0.12); border-color: var(--burgundy); color: #E8ECF8; }
+[data-theme="midnight"] .ts-body            { scrollbar-color: rgba(123,108,240,0.3) transparent; }
+
+/* ──────────────────────────────────────────────────────
+   5. SMOOTH THEME TRANSITION
+   ────────────────────────────────────────────────────── */
+html.ts-transitioning,
+html.ts-transitioning * {
+  transition:
+    background-color 0.38s ease,
+    color            0.38s ease,
+    border-color     0.28s ease,
+    box-shadow       0.28s ease !important;
+}
+
+/* ──────────────────────────────────────────────────────
+   6. FLOATING FAB BUTTON
+   ────────────────────────────────────────────────────── */
+#theme-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9100;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background: var(--burgundy, #701E32);
+  color: var(--ivory, #F8F0DF);
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-sans, 'Lato', sans-serif);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.22), 0 2px 6px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+#theme-fab:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.28), 0 3px 8px rgba(0,0,0,0.14);
+}
+#theme-fab:active { transform: scale(0.96); }
+#theme-fab svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+/* midnight: FAB uses violet bg */
+[data-theme="midnight"] #theme-fab { color: #fff; }
+
+/* Pulse ring */
+#theme-fab::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50px;
+  border: 2px solid var(--gold, #B79555);
+  opacity: 0;
+  animation: fab-pulse 3s 2s ease-out infinite;
+}
+@keyframes fab-pulse {
+  0%   { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 0;   transform: scale(1.18); }
+}
+body.ts-open #theme-fab::after { animation: none; opacity: 0; }
+
+/* ──────────────────────────────────────────────────────
+   7. BACKDROP
+   ────────────────────────────────────────────────────── */
+#theme-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9050;
+  background: rgba(0,0,0,0.22);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+#theme-backdrop.open { opacity: 1; pointer-events: all; }
+[data-theme="midnight"] #theme-backdrop { background: rgba(0,0,0,0.5); }
+
+/* ──────────────────────────────────────────────────────
+   8. PANEL SHELL
+   ────────────────────────────────────────────────────── */
+#theme-panel {
+  position: fixed;
+  bottom: 92px;
+  right: 28px;
+  z-index: 9200;
+  width: min(368px, calc(100vw - 40px));
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(28px) saturate(1.8);
+  -webkit-backdrop-filter: blur(28px) saturate(1.8);
+  border: 1px solid rgba(183,149,85,0.2);
+  border-radius: 26px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.18), 0 12px 30px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.95);
+  overflow: hidden;
+  transform: translateY(18px) scale(0.95);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.38s cubic-bezier(0.34,1.52,0.64,1), opacity 0.26s ease;
+}
+#theme-panel.open {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ──────────────────────────────────────────────────────
+   9. PANEL HEADER
+   ────────────────────────────────────────────────────── */
+.ts-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 18px 14px;
+  border-bottom: 1px solid rgba(183,149,85,0.12);
+  background: linear-gradient(135deg, rgba(248,240,223,0.60) 0%, rgba(255,255,255,0.30) 100%);
+}
+.ts-header-left {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.ts-header-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--burgundy, #701E32), var(--burgundy-l, #8B2741));
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+  flex-shrink: 0;
+}
+.ts-header-icon svg { width: 17px; height: 17px; color: #fff; }
+.ts-title {
+  display: block;
+  font-family: var(--font-serif, 'Cormorant Garamond', serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #1e1008;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
+.ts-subtitle {
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9A7A60;
+  margin-top: 2px;
+  font-family: 'Lato', sans-serif;
+}
+.ts-close {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background: rgba(0,0,0,0.055);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #666;
+  transition: background 0.18s, color 0.18s, transform 0.18s;
+  flex-shrink: 0;
+}
+.ts-close:hover { background: rgba(0,0,0,0.11); color: #222; transform: rotate(90deg); }
+.ts-close svg { width: 13px; height: 13px; }
+
+/* ──────────────────────────────────────────────────────
+   10. PANEL BODY
+   ────────────────────────────────────────────────────── */
+.ts-body {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-height: min(66vh, 500px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(183,149,85,0.28) transparent;
+}
+.ts-body::-webkit-scrollbar { width: 3px; }
+.ts-body::-webkit-scrollbar-thumb { background: rgba(183,149,85,0.28); border-radius: 2px; }
+
+.ts-group-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #a08060;
+  margin-bottom: 9px;
+  font-family: 'Lato', sans-serif;
+}
+
+/* ──────────────────────────────────────────────────────
+   11. THEME ROWS
+   ────────────────────────────────────────────────────── */
+.ts-themes { display: flex; flex-direction: column; gap: 6px; }
+
+.ts-theme-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 11px;
+  border: 1.5px solid transparent;
+  border-radius: 14px;
+  background: rgba(248,244,240,0.55);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+  width: 100%;
+}
+.ts-theme-row:hover { background: rgba(255,255,255,0.90); transform: translateX(3px); }
+.ts-theme-row.ts-active {
+  border-color: var(--burgundy, #701E32);
+  background: rgba(255,255,255,0.96);
+  box-shadow: 0 3px 14px rgba(0,0,0,0.09);
+}
+
+.ts-swatches { display: flex; gap: 3px; flex-shrink: 0; }
+.ts-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.75);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+}
+
+.ts-theme-info { flex: 1; min-width: 0; }
+.ts-theme-name {
+  display: block;
+  font-family: var(--font-serif, 'Cormorant Garamond', serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e1008;
+  line-height: 1.15;
+}
+.ts-theme-desc {
+  display: block;
+  font-size: 0.62rem;
+  color: #a08060;
+  margin-top: 1px;
+  font-family: 'Lato', sans-serif;
+}
+
+.ts-check {
+  width: 19px; height: 19px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(183,149,85,0.35);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+.ts-theme-row.ts-active .ts-check {
+  background: var(--burgundy, #701E32);
+  border-color: var(--burgundy, #701E32);
+}
+.ts-check svg { width: 10px; height: 10px; opacity: 0; color: #fff; transition: opacity 0.18s; }
+.ts-theme-row.ts-active .ts-check svg { opacity: 1; }
+
+/* ──────────────────────────────────────────────────────
+   12. FONT ROWS
+   ────────────────────────────────────────────────────── */
+.ts-fonts { display: flex; flex-direction: column; gap: 6px; }
+
+.ts-font-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 11px;
+  border: 1.5px solid transparent;
+  border-radius: 14px;
+  background: rgba(248,244,240,0.55);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+  width: 100%;
+}
+.ts-font-row:hover { background: rgba(255,255,255,0.90); transform: translateX(3px); }
+.ts-font-row.ts-active {
+  border-color: var(--burgundy, #701E32);
+  background: rgba(255,255,255,0.96);
+  box-shadow: 0 3px 14px rgba(0,0,0,0.09);
+}
+
+.ts-font-glyph {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--ivory, #F8F0DF) 70%, white);
+  border: 1px solid rgba(183,149,85,0.2);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.ts-font-glyph span { font-size: 1.35rem; line-height: 1; color: var(--burgundy, #701E32); }
+.ts-font-row[data-font="classic"]  .ts-font-glyph span { font-family: 'Cormorant Garamond', serif; }
+.ts-font-row[data-font="romantic"] .ts-font-glyph span { font-family: 'Playfair Display', serif; }
+.ts-font-row[data-font="modern"]   .ts-font-glyph span { font-family: 'Libre Baskerville', serif; }
+
+.ts-font-info { flex: 1; min-width: 0; }
+.ts-font-name {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e1008;
+  line-height: 1.15;
+}
+.ts-font-row[data-font="classic"]  .ts-font-name { font-family: 'Cormorant Garamond', serif; }
+.ts-font-row[data-font="romantic"] .ts-font-name { font-family: 'Playfair Display', serif; }
+.ts-font-row[data-font="modern"]   .ts-font-name { font-family: 'Libre Baskerville', serif; }
+
+.ts-font-pair {
+  display: block;
+  font-size: 0.62rem;
+  color: #a08060;
+  margin-top: 1px;
+  font-family: 'Lato', sans-serif;
+}
+
+.ts-font-row .ts-check {
+  width: 19px; height: 19px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(183,149,85,0.35);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+.ts-font-row.ts-active .ts-check {
+  background: var(--burgundy, #701E32);
+  border-color: var(--burgundy, #701E32);
+}
+.ts-font-row.ts-active .ts-check svg { opacity: 1; }
+
+/* ──────────────────────────────────────────────────────
+   13. PANEL FOOTER / RESET
+   ────────────────────────────────────────────────────── */
+.ts-panel-footer { padding: 0 18px 18px; }
+.ts-divider { height: 1px; background: rgba(183,149,85,0.12); margin: 0 0 14px; }
+
+.ts-reset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  padding: 9px 20px;
+  background: transparent;
+  border: 1px solid rgba(183,149,85,0.35);
+  border-radius: 50px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a08060;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.ts-reset:hover {
+  background: color-mix(in srgb, var(--burgundy, #701E32) 7%, transparent);
+  border-color: rgba(112,30,50,0.4);
+  color: var(--burgundy, #701E32);
+}
+.ts-reset svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+/* ──────────────────────────────────────────────────────
+   14. MOBILE SHEET LAYOUT
+   ────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  #theme-panel {
+    bottom: 0;
+    right:  0;
+    left:   0;
+    width:  100%;
+    border-radius: 24px 24px 0 0;
+    transform: translateY(100%);
+    transition: transform 0.38s cubic-bezier(0.34,1.2,0.64,1), opacity 0.24s ease;
+  }
+  #theme-panel.open { transform: translateY(0); opacity: 1; }
+  #theme-fab  { bottom: 20px; right: 20px; }
+  .ts-body    { max-height: 58vh; }
+}
