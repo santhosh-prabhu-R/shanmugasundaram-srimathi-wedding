@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Footer WhatsApp share button ─────────────────
   var waBtn = document.getElementById('footer-whatsapp-btn');
   if (waBtn) {
-    var waMessage = 'After years of debugging life, we have finally decided to deploy Marriage v1.0! \u2764\uFE0F\n\n'
+    var waMessage = 'When destiny writes the story, two lives become one beautiful journey! \u2764\uFE0F\n\n'
       + 'N. Shanmugasundaram & R. Srimathi cordially invite you!\n\n'
       + '\uD83D\uDCC5 16 November 2026 \u2013 Wedding Reception\n'
       + '\u23F0 11:00 AM \u2013 03:00 PM\n\n'
