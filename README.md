@@ -1,7 +1,7 @@
 # 💍 Wedding Reception Invitation
 
 <p align="center">
-  <img src="coverimg.png" alt="Wedding Invitation Cover" width="100%">
+  <img src="assets/coverimg.png" alt="Wedding Invitation Cover" width="100%">
 </p>
 
 <h1 align="center">N. Shanmugasundaram ♥ R. Srimathi</h1>
